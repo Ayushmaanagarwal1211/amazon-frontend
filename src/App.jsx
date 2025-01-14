@@ -14,6 +14,7 @@ function App() {
     <>
       <Navbar/>
       <BelowNavbar/>
+      <div className='h-[60px]'></div>
      {
       isSideBarVisible &&  <Sidebar/>
      } 
