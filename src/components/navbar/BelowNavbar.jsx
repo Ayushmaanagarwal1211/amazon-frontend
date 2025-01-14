@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Sidebar from "./Sidebar";
 import { useDispatch } from "react-redux";
 import { toggleSidebar } from "../../reducer/AmazonSlice";
 
