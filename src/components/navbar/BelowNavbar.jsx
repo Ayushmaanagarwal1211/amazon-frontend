@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 import { useDispatch } from "react-redux";
-import { toggleSidebar } from "../../../reducer/AmazonSlice";
+import { toggleSidebar } from "../../reducer/AmazonSlice";
 
 export default function BelowNavbar() {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);

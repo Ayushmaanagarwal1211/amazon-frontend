@@ -9,12 +9,12 @@ export default function Header() {
     ]
     const [currImage, setCurrImage] = useState(0)
     useEffect(()=>{
-        // const interval = setInterval(()=>{
-        //     setCurrImage(prev=>(prev+1)%images.length)
-        // },2000)
-        // return ()=>{
-        //     clearInterval(interval)
-        // }
+        const interval = setInterval(()=>{
+            setCurrImage(prev=>(prev+1)%images.length)
+        },2000)
+        return ()=>{
+            clearInterval(interval)
+        }
     },[])
   return (
     <div className='flex  relative gap-0  h-[80vh] flex-row w-[100%] overflow-hidden'>
