@@ -1,7 +1,7 @@
 import React from 'react'
-import Sections from './sections'
 import { useDispatch } from 'react-redux'
 import { toggleSidebar } from '../../reducer/AmazonSlice'
+import Section from './Sections'
 // import {} from "react-icons/fa6"
 export default function Sidebar() {
   const dispatch = useDispatch()
