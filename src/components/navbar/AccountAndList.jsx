@@ -7,13 +7,17 @@ export default function AccountAndList() {
 
       const isOpen = useSelector(state=>selectModal(state))
   const dispatch = useDispatch()
-console.log(isOpen)
+const [top,setTop] = useState(0)
+function handleMouseEnter(e){
+  dispatch(togglePopup(true))
+  setTop(e.clientY)
+}
   return (
     <>
+    <div className='relative overflow-visible' onMouseLeave={()=>dispatch(togglePopup(false))} onMouseEnter={handleMouseEnter} >
     {
-        isOpen && <Modal/>
+        isOpen && <Modal />
       }
-    <div className='relative' onMouseLeave={()=>dispatch(togglePopup(false))} onMouseEnter={()=>dispatch(togglePopup(true))} >
         <p>Hello Sign-in</p>
         <p>Accounts and Lists</p>
     </div>

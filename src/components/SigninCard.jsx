@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function SigninCard() {
   return (
-    <div className='h-auto w-[auto] flex justify-center items-center flex-col gap-4 bg-white  p-4'>
+    <div className='h-[450px] w-[auto] flex justify-center items-center flex-col gap-4 bg-white  max-md:h-[400px] p-4'>
         <h1 className='text-2xl font-bold'>
             
              Sign-In For YOur BEst Security

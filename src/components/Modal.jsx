@@ -1,15 +1,16 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { selectModal } from '../reducer/AmazonSlice'
-
-export default function Modal() {
+import { useDispatch, useSelector } from 'react-redux'
+import { selectModal, togglePopup } from '../reducer/AmazonSlice'
+import {Link} from 'react-router'
+export default function Modal({top}) {
+  const dispatch = useDispatch()
   return (
 
-
-   <div  className={`absolute w-auto p-4 h-auto top-[50px] z-[100] bg-white`}>
-        <div className="p-6 flex flex-col items-center gap-3 border-b border-gray-200">
+ 
+   <div onMouseEnter={()=>dispatch(togglePopup(true))}  onMouseLeave={()=>dispatch(togglePopup(false))} className={`absolute top-[50px] w-[500px] left-[-100px] p-4 h-auto z-[100] bg-white`}>
+        <div className="p-6 flex w-auto h-auto flex-col items-center gap-3 border-b border-gray-200">
           <button className="w-full bg-[#FFD814] hover:bg-[#F7CA00] py-2.5 px-4 rounded-lg font-medium text-black transition-colors">
-            Sign in
+            <Link to={'/login'}>Sign-In</Link>
           </button>
           <p className="text-sm">
             New customer?{' '}
@@ -19,7 +20,7 @@ export default function Modal() {
           </p>
         </div>
 
-        <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+        <div className="p-6 grid w-auto h-auto  grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
           <div>
             <h2 className="font-bold text-lg mb-3">Your Lists</h2>
             <ul className="space-y-2">

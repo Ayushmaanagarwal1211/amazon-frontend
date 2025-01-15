@@ -7,7 +7,7 @@ export default function BelowNavbar() {
   const dispatch = useDispatch()
 
   return (
-    <div className="z-[1] flex bg-[#232f3e] h-[40px] w-[100vw] text-white gap-3 items-center ">
+    <div className="z-[1] max-lg:hidden flex bg-[#232f3e] h-[40px] w-[100vw] text-white gap-3 items-center ">
       <div
         className="flex gap-2 justify-center items-center"
         onClick={() =>dispatch(toggleSidebar()) }
@@ -21,7 +21,20 @@ export default function BelowNavbar() {
       </div>
       <div>MX Player</div>
       <div>Cell</div>
-      <div></div>
+      <div>Best Sellers</div>
+<div>Today's Deals</div>
+<div>Mobiles</div>
+<div>Prime</div>
+<div>Customer Service</div>
+<div>Electronics</div>
+<div>Home & Kitchen</div>
+<div>Amazon Pay</div>
+<div>New Releases</div>
+<div>Fashion</div>
+<div>Computers</div>
+<div>Car & Motorbike</div>
+<div>Books</div>
+
     </div>
   );
 }
