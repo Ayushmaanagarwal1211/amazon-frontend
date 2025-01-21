@@ -6,7 +6,7 @@ import axios from 'axios';
 export default function ProductSection() {
   const [data,setData]=  useState([])
   useEffect(()=>{
-     axios.get("http://localhost:5000/products").then(res=>setData(res.data))
+     axios.get("https://amazon-backend-1-mwv3.onrender.com/products").then(res=>setData(res.data))
   },[])
   return (
     <>

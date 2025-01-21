@@ -22,7 +22,7 @@ export default function Login() {
 
     const data = { password:formData.password, email:formData.email}
 
- axios.post('http://localhost:5000/auth/login',{
+ axios.post('https://amazon-backend-1-mwv3.onrender.com/auth/login',{
       data
     }).then(res=>{
       if(res.status == 200){

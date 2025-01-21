@@ -21,7 +21,7 @@ export default function Register() {
         }
         const data = {name:formData.name, password:formData.password, email:formData.email}
 
-        await axios.post('http://localhost:5000/auth',{
+        await axios.post('https://amazon-backend-1-mwv3.onrender.com/auth',{
           data
         })
       }

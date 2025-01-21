@@ -16,7 +16,7 @@ export default function usePatch() {
     return function (url,body){
       dispatch(toggleLoading(true))
      const token = JSON.parse(localStorage.getItem("token"))
-        axios.patch("http://localhost:5000/" + url,body,{
+        axios.patch("https://amazon-backend-1-mwv3.onrender.com/" + url,body,{
            headers: {
              Authorization: `Bearer ${token}`, // Make sure token is passed correctly in the headers
            },
@@ -28,12 +28,12 @@ export default function usePatch() {
               return 
             }
             const refresh_token = JSON.parse(localStorage.getItem("refresh_token"))
-            axios.request(authConfig("post","http://localhost:5000/auth/refresh-token",{refresh_token},refresh_token)).then(res=>{
+            axios.request(authConfig("post","https://amazon-backend-1-mwv3.onrender.com/auth/refresh-token",{refresh_token},refresh_token)).then(res=>{
               const new_token = res.data.new_token
               localStorage.setItem("token",JSON.stringify(new_token))
               return new_token
             }).then(res=>{
-              axios.patch("http://localhost:5000/" + url,body,{
+              axios.patch("https://amazon-backend-1-mwv3.onrender.com/" + url,body,{
                 headers: {
                   Authorization: `Bearer ${res}`, // Make sure token is passed correctly in the headers
                 },

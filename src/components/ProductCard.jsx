@@ -21,7 +21,7 @@ export default function ProductCard({product}) {
   const post = usePost();
 
   async function handleAddToCart() {
-    post(`http://localhost:5000/cart/add-product/${product._id}`, {});
+    post(`https://amazon-backend-1-mwv3.onrender.com/cart/add-product/${product._id}`, {});
   }
 
   return (

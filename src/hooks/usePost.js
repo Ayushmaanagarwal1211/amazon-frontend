@@ -30,7 +30,7 @@ export default function usePost() {
                     return 
                   }
                   const refresh_token = JSON.parse(localStorage.getItem("refresh_token"))
-                  axios.request(authConfig("post","http://localhost:5000/auth/refresh-token",{refresh_token},refresh_token)).then(res=>{
+                  axios.request(authConfig("post","https://amazon-backend-1-mwv3.onrender.com/auth/refresh-token",{refresh_token},refresh_token)).then(res=>{
                   const new_token = res.data.new_token
                   localStorage.setItem("token",JSON.stringify(new_token))
                   return new_token

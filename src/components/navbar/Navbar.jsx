@@ -18,7 +18,7 @@ export default function Navbar() {
   const cartItems = useSelector(state=>selectCart(state))
   const get = useGet()
   useEffect(()=>{
-    get("http://localhost:5000/cart")
+    get("https://amazon-backend-1-mwv3.onrender.com/cart")
   },[])
   const dispatch = useDispatch()
   return (
