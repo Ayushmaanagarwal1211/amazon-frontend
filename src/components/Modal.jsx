@@ -17,11 +17,6 @@ const accountLists = [
   'Your Recommendations',
   'Your Prime Membership',
   'Your Prime Video',
-  'Your Subscribe & Save Items',
-  'Memberships & Subscriptions',
-  'Your Seller Account',
-  'Manage Your Content and Devices',
-  'Register for a free Business Account',
 ]
 export default function Modal({top}) {
   const dispatch = useDispatch()
@@ -29,7 +24,7 @@ export default function Modal({top}) {
   return (
 
  
-   <div onMouseLeave={()=>dispatch(togglePopup(false))} onMouseEnter={()=>dispatch(togglePopup(true))}   className={`absolute top-[45px] w-[500px] left-[-300px] p-4 h-auto z-[100] bg-white`}>
+   <div onMouseLeave={()=>dispatch(togglePopup(false))} onMouseEnter={()=>dispatch(togglePopup(true))}   className={`absolute top-[45px] w-[300px] left-[-100px] p-4 h-auto z-[100] bg-white`}>
         <FaCaretUp className='absolute top-[-25px] right-10' color='white' size={'3rem'}/>
         <div className="p-6 flex w-auto h-auto flex-col items-center gap-3 border-b border-gray-200">
          {user ? <>

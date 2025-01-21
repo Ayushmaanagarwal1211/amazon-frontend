@@ -22,7 +22,7 @@ export default function Navbar() {
   },[])
   const dispatch = useDispatch()
   return (
-    <div className='bg-[#131921] sticky top-0 z-[99] px-3 max-md:h-[auto] h-[60px] py-1 min-h-[50px]   w-[100vw]  flex flex-wrap gap-1 justify-between' >
+    <div className='bg-[#131921] sticky top-0 z-[99] px-3 max-md:h-[auto] h-[auto] py-1 min-h-[50px]   w-[100vw]  flex flex-wrap gap-1 justify-between' >
       <div className='logo w-[auto] justify-center  flex items-center'><img className='h-[40px] w-[100px]' src={amazon_clone}></img></div>
       <div className="w-[auto]  flex flex-col justify-center flex-wrap">
           <p className='text-gray-300 text-[12px]'>Delevering to RAmpur</p>
