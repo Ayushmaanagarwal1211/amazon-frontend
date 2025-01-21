@@ -1,22 +1,29 @@
 import React from 'react'
-import { decreaseCountOfACartProduct, increaseCountOfACartProduct, removeFromCart } from '../../reducer/AmazonSlice'
-import { useDispatch } from 'react-redux'
-import { Minus, Plus, ShoppingCart, Gift } from 'lucide-react';
+import { Minus, Plus } from 'lucide-react';
+import usePatch from '../../hooks/usePatch';
 
-export default function CartItem({item}) {
-    const dispatch = useDispatch()
+export default function CartItem({item,count,isSelected,_id}) {
+  const patch = usePatch()
         function handleIncreaseCount(){
-            return dispatch(increaseCountOfACartProduct(item.id))
+          return patch(`cart/increase-product-count/${_id}`,{})
         }
         function handleDecreaseCount(){
-            if(item.count == 1){
-                return dispatch(removeFromCart(item.id))
+            if(count == 1){
+              return patch(`cart/remove-product-from-cart/${_id}`,{})
             }
-            return dispatch(decreaseCountOfACartProduct(item.id))
+            return patch(`cart/decrease-product-count/${_id}`,{})
+          }
+          function handleRemove(){
+            return patch(`cart/remove-product-from-cart/${_id}`,{})
+          }
+        function handleSelectionChange(){
+          return patch(`cart/change-product-selection/${_id}`,{})
         }
+        item = {...item, ...item.product}
   return (
-    <div key={item.id} className="p-6">
-              <div className="flex space-x-6">
+    <div key={item.id}  className={`p-6 `}>
+                <input type='checkbox' onChange={handleSelectionChange} checked={isSelected}></input>
+              <div className={`${isSelected?"":"pointer-events-none"} flex space-x-6 `} >
                 <div className="flex-shrink-0 w-32 h-32">
                   <img
                     src={item.image}
@@ -56,18 +63,16 @@ export default function CartItem({item}) {
                   </div>
                   <div className="mt-4 flex items-center space-x-4">
                     <div className="flex items-center border rounded-md">
-                      <button className="p-2 hover:bg-gray-100" onClick={handleDecreaseCount}>
+                      <button   className="p-2 hover:bg-gray-100" onClick={handleDecreaseCount}>
                         <Minus className="w-4 h-4" />
                       </button>
-                      <span className="px-4 py-2 text-gray-900">{item.count}</span>
+                      <span className="px-4 py-2 text-gray-900">{count}</span>
                       <button className="p-2 hover:bg-gray-100" onClick={handleIncreaseCount}>
                         <Plus className="w-4 h-4" />
                       </button>
                     </div>
                     <div className="flex space-x-4 text-sm text-blue-600">
-                      <button className="hover:text-blue-800">Delete</button>
-                      <button className="hover:text-blue-800">Save for later</button>
-                      <button className="hover:text-blue-800">See more like this</button>
+                      <button className="hover:text-blue-800" onClick={handleRemove}>Delete</button>
                       <button className="hover:text-blue-800">Share</button>
                     </div>
                   </div>

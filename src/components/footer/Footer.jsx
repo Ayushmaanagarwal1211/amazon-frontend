@@ -86,13 +86,13 @@ export default function Footer() {
       return (
 
         <footer className="w-full bg-[#232F3E] text-white">
-             <div onClick={scrollToTop} className="cursor-pointer bg-[#131A22] py-2 text-center">
+             <div onClick={scrollToTop} className="cursor-pointer bg-[#37475a] py-2 text-center">
             <p className="text-sm text-gray-300 hover:text-white">
               Back to top
             </p>
           </div>
-          <div className="max-w-[1000px] mx-auto py-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 px-4">
+          <div className="w-[100vw]   pt-8">
+            <div className="grid  grid-cols-1 pb-4 m-auto md:grid-cols-4 gap-8 px-4">
               {Object.entries(footerLinks).map(([category, links]) => (
                 <div key={category}>
                   <h3 className="font-bold text-base mb-3">{category}</h3>
@@ -112,7 +112,7 @@ export default function Footer() {
               ))}
             </div>
     
-            <div className="mt-8 pt-8 border-t border-gray-600">
+            <div className="pt-8 border-t bg-[#131a22] w-[100vw] border-gray-600">
               {/* Services Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-4 mb-8">
                 {services.map((service) => (
@@ -145,7 +145,7 @@ export default function Footer() {
               </div>
             </div>
     
-            <div className="mt-4 text-center text-xs text-gray-300">
+            <div className="pt-4 text-center text-xs pb-4 bg-[#131a22] text-gray-300">
               <div className="flex justify-center space-x-4 mb-2">
                 <a href="#" className="hover:text-white hover:underline">Conditions of Use & Sale</a>
                 <a href="#" className="hover:text-white hover:underline">Privacy Notice</a>

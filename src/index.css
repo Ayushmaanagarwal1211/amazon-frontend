@@ -15,3 +15,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.sidebar-animation{
+  animation: sidebar-animate ease-in 0.1s  ;
+  }
+  @keyframes sidebar-animate {
+          from{
+              width: 0px;
+              overflow: hidden;
+          }
+
+          to{
+            overflow: visible;
+              width:  30vw  ;
+          }
+  }

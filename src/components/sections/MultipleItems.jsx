@@ -6,14 +6,14 @@ export default function MultipleItems({heading,images}) {
     const ref = useRef()
     function handleScrollLeft(){
         ref.current.scrollTo({
-            left: ref.current.scrollLeft - 500, // Scroll left by 100px
-            behavior: 'smooth' // Smooth scrolling effect
+            left: ref.current.scrollLeft - 500, 
+            behavior: 'smooth' 
           });
     }
     function handleScrollRight(){
         ref.current.scrollTo({
-            left: ref.current.scrollLeft + 500, // Scroll left by 100px
-            behavior: 'smooth' // Smooth scrolling effect
+            left: ref.current.scrollLeft + 500, 
+            behavior: 'smooth' 
           });
     }
   return (

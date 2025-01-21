@@ -9,20 +9,16 @@ import { selectSidebar } from '../reducer/AmazonSlice'
 import Footer from './footer/Footer'
 
 export default function Homepage() {
-    const isSideBarVisible = useSelector(state=>selectSidebar(state))
 
   return (
     <>
-    <Navbar/>
       <BelowNavbar/>
-    {
-      isSideBarVisible && <Sidebar/>
-    }
-     <div className='w-[80vw] max-md:w-[100vw] m-auto p-0 '>
+      <Sidebar/>
+
+     <div className='w-[98vw] h-auto max-md:w-[100vw] m-auto p-0 '>
       <Header/>
      <Section/>
      </div>
-     <Footer/>
     </>
   )
 }

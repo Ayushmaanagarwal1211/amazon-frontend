@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Card({heading,images}) {
   return (
-    <div className="w-[600px] max-md:w-[70vw] max-sm:w-[90vw] max-lg:w-[30vw] h-[450px] max-md:h-[400px]  max-w-sm bg-white p-6 rounded-lg z-[80] shadow-lg">
+    <div className="w-[25vw] max-md:w-[80vw] max-sm:w-[90vw] max-lg:w-[50vw] h-[auto] max-md:h-[400px]   bg-white p-6 rounded-lg z-[80] shadow-lg">
       {/* Card Header */}
       <div className="p-4 max-md:p-1">
         <div className="flex items-center gap-2">
@@ -11,7 +11,7 @@ export default function Card({heading,images}) {
         </div>
       </div>
       
-        <div className={`grid h-auto ${images.length>2?"grid-rows-2":""} grid-cols-[${images.length>1?"2":'1'}] grid-flow-col-dense`}>
+        <div className={`grid h-[200px] ${images.length>2?"grid-rows-2":""} grid-cols-[${images.length>1?"2":'1'}] grid-flow-col-dense`}>
             {
                 images.map((data)=><img 
                 src={data}
@@ -33,3 +33,6 @@ export default function Card({heading,images}) {
 //   </div>
   )
 }
+
+
+

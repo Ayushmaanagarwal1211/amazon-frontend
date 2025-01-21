@@ -25,7 +25,7 @@ export default function Section() {
     "https://m.media-amazon.com/images/I/61xaOlax5SL._AC_SY200_.jpg"
     ]
   return (
-    <div className='  relative gap-0 flex-wrap  h-[auto] flex-row w-[100%] overflow-hidden'>
+    <div className='  relative gap-0 flex-wrap  mt-3 h-[auto] flex-row w-[100%] overflow-hidden'>
         <Section_1/>
         <MultipleItems heading={"Up to 70% off | Toys & fun games | Amazon brands & more"} images={images}/>
         <MultipleItems heading={"Up to 40% off | Deals on smartphones"} images={images}/>
