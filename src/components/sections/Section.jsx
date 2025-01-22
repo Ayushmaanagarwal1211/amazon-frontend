@@ -29,6 +29,7 @@ export default function Section() {
         <Section_1/>
         <MultipleItems heading={"Up to 70% off | Toys & fun games | Amazon brands & more"} images={images}/>
         <MultipleItems heading={"Up to 40% off | Deals on smartphones"} images={images}/>
+      
         <ProductSection/>
     </div>
   )

@@ -2,17 +2,30 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectUser, setCartData } from '../reducer/AmazonSlice'
+import refreshToken from './refreshToken'
 
-export default function useGet(url) {
-    const user = useSelector(state=>selectUser(state))
-    const dispatch = useDispatch()
-    return function (url){
-      const token = JSON.parse(localStorage.getItem("token"))
-      axios.get(url,{
-          headers: {
-            Authorization: `Bearer ${token}`, 
-          },
-        }).then(res=> dispatch(setCartData(res.data)))
-        
+async function makeGetRequest(url){
+  const token = JSON.parse(localStorage.getItem("token"))
+
+  return await axios.get(url,{
+    headers: {
+      Authorization: `Bearer ${token}`, 
+    },
+  })
+}
+export default  function useGet() {
+    return async function (url){
+      try{
+          const response = await makeGetRequest(url)
+          return response
+      }catch(err){
+          try{
+            await refreshToken(err)
+            const res = await makeGetRequest(url)
+            return res
+          }catch(err){
+            return err
+          }
+      }
     }
 }

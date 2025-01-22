@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react'
 import ProductCard from '../ProductCard';
 import axios from 'axios';
 
-  
+  async function getProducts(){
+   return  axios.get("http://localhost:5000/products").then(res=>setData(res.data))
+  }
+  const fetchData = getProducts()
 export default function ProductSection() {
-  const [data,setData]=  useState([])
-  useEffect(()=>{
-     axios.get("https://amazon-backend-1-mwv3.onrender.com/products").then(res=>setData(res.data))
-  },[])
+  // const [data,setData]=  useState([])
+  const data = use(fetchData())
+  // useEffect(()=>{
+  //    axios.get("http://localhost:5000/products").then(res=>setData(res.data))
+  // },[])
   return (
     <>
     <div  className='bg-white mt-5 p-4'>
@@ -16,7 +20,7 @@ export default function ProductSection() {
     <div className='w-[100%] flex flex-row flex-wrap justify-around'>
 
     {
-      data && data?.map((product)=><ProductCard product={product}/>)
+       data.map((product)=><ProductCard product={product}/>)
     }
     </div>
     </div>

@@ -2,7 +2,6 @@ import React from 'react';
 import { Star, Truck } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import usePost from '../hooks/usePost';
-import useGet from '../hooks/useGet';
 
 const renderStars = (rating) => {
   return [...Array(5)].map((_, index) => (
@@ -21,7 +20,7 @@ export default function ProductCard({product}) {
   const post = usePost();
 
   async function handleAddToCart() {
-    post(`https://amazon-backend-1-mwv3.onrender.com/cart/add-product/${product._id}`, {});
+    post(`http://localhost:5000/cart/add-product/${product._id}`, {});
   }
 
   return (

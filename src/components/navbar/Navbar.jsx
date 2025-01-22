@@ -9,18 +9,18 @@ import { Link } from 'react-router'
 import { FaLocationDot } from 'react-icons/fa6'
 import cart from '../../images/cart.svg'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectCart, setCartData, togglePopup } from '../../reducer/AmazonSlice'
-import usePatch from '../../hooks/usePatch'
+import { selectCart, selectUser, setCartData, togglePopup } from '../../reducer/AmazonSlice'
 import useGet from '../../hooks/useGet'
-import { ToggleRight } from 'lucide-react'
-// imporfrom 'react-icons/fa6'
 export default function Navbar() {
   const cartItems = useSelector(state=>selectCart(state))
   const get = useGet()
-  useEffect(()=>{
-    get("https://amazon-backend-1-mwv3.onrender.com/cart")
-  },[])
   const dispatch = useDispatch()
+  const user = useSelector(state=>selectUser(state))
+  useEffect(()=>{
+    if(user){
+      get("http://localhost:5000/cart").then(res=>dispatch(setCartData(res.data)))
+    }
+  },[user])
   return (
     <div className='bg-[#131921] sticky top-0 z-[99] px-3 max-md:h-[auto] h-[auto] py-1 min-h-[50px]   w-[100vw]  flex flex-wrap gap-1 justify-between' >
       <div className='logo w-[auto] justify-center  flex items-center'><img className='h-[40px] w-[100px]' src={amazon_clone}></img></div>

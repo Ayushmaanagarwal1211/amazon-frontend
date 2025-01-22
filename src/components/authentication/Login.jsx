@@ -1,15 +1,23 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
-import {Link, useNavigate} from 'react-router'
-import { setUser } from '../../reducer/AmazonSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import {Link, Navigate, Outlet, useLocation, useNavigate} from 'react-router'
+import { selectCart, selectUser, setUser } from '../../reducer/AmazonSlice';
 
-export default function Login() {
+export  function AuthNavigate(){
+  const user = useSelector(state=>selectUser(state))
+  const pathname = useLocation().pathname
+ return  user  ? <Outlet/> : <Navigate to={'/login'} state={{next : pathname}}/>
+ 
+}
+export default  function Login() {
   const [formData, setFormData] = useState({
-        email: '',
-    password: '',
+        email: 'ayush@gmail.com',
+    password: 'ayush',
   });
-
+  const location = useLocation()
+  const nextPath = location.state?.next || '/'
+  console.log(nextPath,location)
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -22,14 +30,14 @@ export default function Login() {
 
     const data = { password:formData.password, email:formData.email}
 
- axios.post('https://amazon-backend-1-mwv3.onrender.com/auth/login',{
+ axios.post('http://localhost:5000/auth/login',{
       data
     }).then(res=>{
       if(res.status == 200){
         dispatch(setUser({user : res.data.user}))
         localStorage.setItem("refresh_token",JSON.stringify(res.data.refresh_token))
         localStorage.setItem("token",JSON.stringify(res.data.token))
-        navigate("/")
+        navigate(nextPath)
       }
     })
 
