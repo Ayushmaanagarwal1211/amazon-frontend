@@ -1,27 +1,40 @@
-import React from 'react'
+import React, { useTransition } from 'react'
 import { Minus, Plus } from 'lucide-react';
 import usePatch from '../../hooks/usePatch';
-
+function delay(time) {
+  return new Promise((res) => setTimeout(() => res("Resolved after delay"), time));
+}
 export default function CartItem({item,count,isSelected,_id}) {
   const patch = usePatch()
-        function handleIncreaseCount(){
-          return patch(`cart/increase-product-count/${_id}`,{})
+  const [pending,startTransition] = useTransition()      
+  function handleIncreaseCount(){
+    startTransition(async ()=>{
+     await patch(`cart/increase-product-count/${_id}`,{})
+    })
         }
         function handleDecreaseCount(){
             if(count == 1){
-              return patch(`cart/remove-product-from-cart/${_id}`,{})
+              startTransition(async ()=>{
+                await patch(`cart/remove-product-from-cart/${_id}`,{})
+               })
             }
-            return patch(`cart/decrease-product-count/${_id}`,{})
+            startTransition(async ()=>{
+              await patch(`cart/decrease-product-count/${_id}`,{})
+             })
           }
           function handleRemove(){
-            return patch(`cart/remove-product-from-cart/${_id}`,{})
+            startTransition(async ()=>{
+              await patch(`cart/remove-product-from-cart/${_id}`,{})
+             })
           }
         function handleSelectionChange(){
-          return patch(`cart/change-product-selection/${_id}`,{})
+          startTransition(async ()=>{
+          await patch(`cart/change-product-selection/${_id}`,{})
+           })
         }
         item = {...item, ...item.product}
   return (
-    <div key={item.id}  className={`p-6 `}>
+    <div disabled={pending}  key={item.id}  className={`p-6 ${pending?"pointer-events-none":""}`}>
                 <input type='checkbox' onChange={handleSelectionChange} checked={isSelected}></input>
               <div className={`${isSelected?"":"pointer-events-none"} flex space-x-6 `} >
                 <div className="flex-shrink-0 w-32 h-32">
@@ -67,7 +80,7 @@ export default function CartItem({item,count,isSelected,_id}) {
                         <Minus className="w-4 h-4" />
                       </button>
                       <span className="px-4 py-2 text-gray-900">{count}</span>
-                      <button className="p-2 hover:bg-gray-100" onClick={handleIncreaseCount}>
+                      <button className="p-2 hover:bg-gray-100"  onClick={handleIncreaseCount}>
                         <Plus className="w-4 h-4" />
                       </button>
                     </div>

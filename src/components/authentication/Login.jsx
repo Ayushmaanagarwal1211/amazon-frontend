@@ -3,11 +3,13 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import {Link, Navigate, Outlet, useLocation, useNavigate} from 'react-router'
 import { selectCart, selectUser, setUser } from '../../reducer/AmazonSlice';
+import Navbar from '../navbar/Navbar';
+import Footer from '../footer/Footer';
 
 export  function AuthNavigate(){
   const user = useSelector(state=>selectUser(state))
   const pathname = useLocation().pathname
- return  user  ? <Outlet/> : <Navigate to={'/login'} state={{next : pathname}}/>
+ return  user  ? <><Navbar/><Outlet/><Footer/></> : <Navigate to={'/login'} state={{next : pathname}}/>
  
 }
 export default  function Login() {

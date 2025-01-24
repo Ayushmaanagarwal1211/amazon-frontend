@@ -25,14 +25,16 @@ export default function usePatch() {
     const dispatch = useDispatch()
     return async function (url,body){
      try{
-       makepatchRequest("http://localhost:5000/" + url,body)
-        .then(res=>dispatch(setCartData(res.data)))
-
+       const response = await makepatchRequest("http://localhost:5000/" + url,body)
+        // .then(res=>dispatch(setCartData(res.data)))
+        dispatch(setCartData(response.data))
       }
       catch(err){
+        // console.log(err)
         await refreshToken(err)
-        makepatchRequest("http://localhost:5000/" + url,body)
-        .then(res=>{dispatch(setCartData(res.data));})
+        const response = await   makepatchRequest("http://localhost:5000/" + url,body)
+        dispatch(setCartData(response.data))
+
       }
          
     }

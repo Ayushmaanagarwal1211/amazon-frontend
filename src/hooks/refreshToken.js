@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { authConfig } from './usePatch'
 
 export default async  function refreshToken(err) {
+  console.log(err,'error')
     const error =err?.response?.data?.message
             if(error !== "jwt expired"){
               return 

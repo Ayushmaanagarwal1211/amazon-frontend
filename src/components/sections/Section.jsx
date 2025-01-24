@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import Section_1 from './Section-1'
 import MultipleItems from './MultipleItems'
 import ProductSection from './ProductSection'
@@ -29,8 +29,10 @@ export default function Section() {
         <Section_1/>
         <MultipleItems heading={"Up to 70% off | Toys & fun games | Amazon brands & more"} images={images}/>
         <MultipleItems heading={"Up to 40% off | Deals on smartphones"} images={images}/>
-      
+      <Suspense fallback={<h1>Loading</h1>}>
+
         <ProductSection/>
+      </Suspense>
     </div>
   )
 }

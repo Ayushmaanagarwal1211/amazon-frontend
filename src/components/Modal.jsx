@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectModal, selectUser, togglePopup } from '../reducer/AmazonSlice'
 import {Link} from 'react-router'
 import { FaCaretUp } from 'react-icons/fa6'
+import Profile from './Profile'
 const lists = [
                 'Create a Wish List',
                 'Wish from Any Website',
@@ -21,6 +22,7 @@ const accountLists = [
 export default function Modal({top}) {
   const dispatch = useDispatch()
   const user = useSelector(state=>selectUser(state))
+  console.log(user)
   return (
 
  
@@ -28,7 +30,9 @@ export default function Modal({top}) {
         <FaCaretUp className='absolute top-[-25px] right-10' color='white' size={'3rem'}/>
         <div className="p-6 flex w-auto h-auto flex-col items-center gap-3 border-b border-gray-200">
          {user ? <>
-          <h1 className='text-black'>{user.name}</h1>
+          <Link to={'/profile'} className='w-full bg-[#FFD814] hover:bg-[#F7CA00] py-2.5 px-4 rounded-lg font-medium text-black transition-colors fledx justify-center text-center'><button className="">
+           Profile
+          </button></Link>
          </>:<>
          <Link to={'/login'} className='w-full bg-[#FFD814] hover:bg-[#F7CA00] py-2.5 px-4 rounded-lg font-medium text-black transition-colors fledx justify-center text-center'><button className="">
            Sign-In

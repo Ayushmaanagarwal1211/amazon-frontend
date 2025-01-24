@@ -27,6 +27,9 @@ const slice = createSlice({
         setUser: (state,action)=>{
             const {user,token} = action.payload
             state.currUser.user = user
+        },
+        removeUser : (state,action)=>{
+            state.currUser.user = null;
         }
         // increaseCountOfACartProduct: (state,action)=>{
         //     state.cart = state.cart.map((product)=>{
@@ -79,6 +82,7 @@ export const {
     setUser,
     togglePopup,
     toggleLoading,
+    removeUser
             // changeSelection,
             // decreaseCountOfACartProduct,
             // increaseCountOfACartProduct, 

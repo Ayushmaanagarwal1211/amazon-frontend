@@ -9,6 +9,7 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { setUser } from './reducer/AmazonSlice'
 import {AuthNavigate} from './components/authentication/Login'
+import Profile from './components/Profile'
 const ErrorBoundary = () => (
   <div>
     <h1>Oops! Something went wrong.</h1>
@@ -41,9 +42,14 @@ const routes = createBrowserRouter([
       {
         path:"/cart",
         element:<Cart/>
+      },
+      {
+        path : "/profile",
+        element : <Profile/>
       }
-    ]
-  }
+    ],
+  },
+  
 ])
 
 function App() {

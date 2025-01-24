@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,use } from 'react'
 import ProductCard from '../ProductCard';
 import axios from 'axios';
 
   async function getProducts(){
-   return  axios.get("http://localhost:5000/products").then(res=>setData(res.data))
+   return  axios.get("http://localhost:5000/products").then(res=>res.data)
   }
   const fetchData = getProducts()
 export default function ProductSection() {
-  // const [data,setData]=  useState([])
-  const data = use(fetchData())
-  // useEffect(()=>{
-  //    axios.get("http://localhost:5000/products").then(res=>setData(res.data))
-  // },[])
+  const data = use(fetchData)
   return (
     <>
     <div  className='bg-white mt-5 p-4'>
